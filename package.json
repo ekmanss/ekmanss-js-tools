@@ -1,6 +1,6 @@
 {
   "name": "ekmanss-js-tools",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A collection of JavaScript tools including repo context generator",
   "main": "src/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "ignore": "^5.2.4"
+    "ignore": "^5.2.4",
+    "minimatch": "^5.1.0"
   }
 }
