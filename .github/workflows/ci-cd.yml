@@ -57,7 +57,7 @@ jobs:
           node-version: 18.x
           registry-url: 'https://registry.npmjs.org'
           always-auth: true
-          token: ${{ secrets.NPM_TOKEN }}
+          npm-token: ${{ secrets.NPM_TOKEN }}
 
       # 安装 pnpm 的最新版
       - name: Setup pnpm
