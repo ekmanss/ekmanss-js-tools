@@ -1,4 +1,5 @@
-export { AIContextGenerator } from './ai-context-generator/index.js';
+const repoContextGenerator = require('./repoContextGenerator');
 
-// Future tools can be exported here
-// export { OtherTool } from './other-tool/index.js';
+module.exports = {
+    repoContextGenerator
+};

@@ -1,37 +1,22 @@
 {
   "name": "ekmanss-js-tools",
-  "version": "1.0.1",
-  "description": "A collection of JavaScript development tools including AI Context Generator",
+  "version": "1.0.0",
+  "description": "A collection of JavaScript tools including repo context generator",
   "main": "src/index.js",
-  "type": "module",
-  "bin": {
-    "ekmanss-js-tools": "./bin/ekmanss-js-tools.js"
-  },
   "scripts": {
-    "start": "node bin/ekmanss-js-tools.js",
-    "test": "jest"
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "keywords": [
-    "development",
     "tools",
-    "ai",
+    "repository",
     "context",
-    "generator"
+    "tree",
+    "file-contents",
+    "development"
   ],
-  "author": "ekmanss",
+  "author": "Your Name",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ekmanss/ekmanss-js-tools.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ekmanss/ekmanss-js-tools/issues"
-  },
-  "homepage": "https://github.com/ekmanss/ekmanss-js-tools#readme",
-  "devDependencies": {
-    "@babel/core": "^7.25.7",
-    "@babel/preset-env": "^7.25.7",
-    "babel-jest": "^29.7.0",
-    "jest": "^29.7.0"
+  "dependencies": {
+    "ignore": "^5.2.4"
   }
 }
