@@ -12,21 +12,34 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # 设置 Node.js 版本
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
 
+      # 安装 pnpm 的最新版
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest  # 安装 pnpm 的最新版
+          version: latest  # 安装 pnpm 的最新版本
 
+      # 验证 pnpm 安装
+      - name: Verify pnpm installation
+        run: pnpm --version
+
+      # 使用缓存功能
+      - name: Setup pnpm cache
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      # 安装依赖
       - name: Install dependencies
         run: pnpm install
 
+      # 运行测试
       - name: Run tests
         run: pnpm test
 
@@ -37,23 +50,36 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # 设置 Node.js 版本
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
           registry-url: 'https://registry.npmjs.org'
           always-auth: true
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
           token: ${{ secrets.NPM_TOKEN }}
 
+      # 安装 pnpm 的最新版
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest  # 安装 pnpm 的最新版
+          version: latest  # 安装 pnpm 的最新版本
 
+      # 验证 pnpm 安装
+      - name: Verify pnpm installation
+        run: pnpm --version
+
+      # 使用缓存功能
+      - name: Setup pnpm cache
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      # 安装依赖
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # 发布到 npm
       - name: Publish to npm
         run: pnpm publish --access public
