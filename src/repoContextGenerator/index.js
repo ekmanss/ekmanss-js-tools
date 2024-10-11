@@ -7,6 +7,7 @@ const {extractContent} = require('../utils/contentExtractor');
 function generateRepoContext({repoPath, outputFile, options}) {
     // 初始化 ignore 实例
     options.ig = initIgnore(repoPath);
+    options.repoPath = repoPath;
 
     // 构建目录树
     const treeLines = buildTree(repoPath, options);
@@ -38,7 +39,6 @@ function generateRepoContext({repoPath, outputFile, options}) {
 //     repoPath: '/Users/linchuan/temp/clerk-react',
 //     outputFile: 'output15.md',
 //     options: {
-//         repoPath: '/Users/linchuan/temp/clerk-react',
 //         treeIgnorePatterns: [],
 //         contentIgnorePatterns: ["**/*.lock", "**/*.svg", ".github/", "README.md", "LICENSE"],
 //     }
