@@ -55,9 +55,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          registry-url: 'https://registry.npmjs.org'
-          always-auth: true
-          npm-token: ${{ secrets.NPM_TOKEN }}
 
       # 安装 pnpm 的最新版
       - name: Setup pnpm
@@ -83,3 +80,5 @@ jobs:
       # 发布到 npm
       - name: Publish to npm
         run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
