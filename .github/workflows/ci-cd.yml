@@ -11,19 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [ 14.x, 16.x, 18.x ]
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Clear npm cache
-        run: npm cache clean --force
+
+      # 安装 pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Clear pnpm store
+        run: pnpm store prune
+
+      # 安装依赖
       - name: Install dependencies
-        run: npm install
-      - run: npm test
+        run: pnpm install
+
+      # 运行测试
+      - run: pnpm test
 
   publish:
     needs: test
@@ -32,11 +42,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-      - run: npm publish
+
+      # 安装 pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # 使用锁定文件安装依赖
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 发布到 npm
+      - run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
