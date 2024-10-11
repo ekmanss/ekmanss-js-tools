@@ -35,14 +35,4 @@ function generateRepoContext({repoPath, outputFile, options}) {
     return outputLines;
 }
 
-// generateRepoContext({
-//     repoPath: '/Users/linchuan/temp/clerk-react',
-//     outputFile: 'output15.md',
-//     options: {
-//         treeIgnorePatterns: [],
-//         contentIgnorePatterns: ["**/*.lock", "**/*.svg", ".github/", "README.md", "LICENSE"],
-//     }
-// })
-
-
 module.exports = generateRepoContext;

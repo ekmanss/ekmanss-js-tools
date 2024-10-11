@@ -1,5 +1,5 @@
-const repoContextGenerator = require('./repoContextGenerator');
+const generateRepoContext = require('./repoContextGenerator');
 
 module.exports = {
-    repoContextGenerator
+    generateRepoContext
 };
